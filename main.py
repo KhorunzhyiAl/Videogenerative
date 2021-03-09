@@ -3,11 +3,10 @@ import numpy as np
 import time
 
 
-rea = cv2.VideoCapture("input/ksp.mp4")
+rea = cv2.VideoCapture("input/input_vid.mp4")
 
 if not rea.isOpened():
-    # do something to stop the program idk what
-    pass
+    print("error opening video")
 
 ix = int(rea.get(cv2.CAP_PROP_FRAME_WIDTH))
 iy = int(rea.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -16,9 +15,10 @@ ox = it
 oy = iy
 ot = ix
 
-wri = cv2.VideoWriter("output/res.avi", cv2.VideoWriter_fourcc(*"MJPG"), 30.0, (ox, oy))
+wri = cv2.VideoWriter("output/out.avi", cv2.VideoWriter_fourcc(*"MJPG"), 30.0, (ox, oy))
 
 curr_x = 0
+
 # we can't fit the entire video into the memory, but we want to get as much of it as possible per iteration
 step = 300
 
